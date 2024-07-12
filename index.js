@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const path = require('path');
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -19,24 +20,12 @@ app.use(function (req, res, next) {
 
 // Serve the dashboard directly when accessing the root
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/html/dashboard.html');
+    res.sendFile(path.join(__dirname, 'public/html/dashboard.html'));
 });
 
-// Optionally, handle the POST request to validate the login but automatically send success
+// Respond to login attempts by closing the window
 app.post('/player/growid/login/validate', (req, res) => {
-    const _token = req.body._token;
-    const growId = req.body.growId;
-    const password = req.body.password;
-
-    const token = Buffer.from(`_token=${_token}&growId=${growId}&password=${password}`).toString('base64');
-
-    res.send({
-        status: "success",
-        message: "Account Validated.",
-        token: token,
-        url: "",
-        accountType: "growtopia"
-    });
+    res.send('<script>window.close();</script>');
 });
 
 // Close the window script
