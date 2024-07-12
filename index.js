@@ -24,7 +24,7 @@ app.post('/player/validate/close', function (req, res) {
     res.redirect('/player/validate/close);
 });
 
-app.post('/player/growid/login/validate', (req, res) => {
+app.post('/player/validate/close', (req, res) => {
     res.send(
         `{"status":"success","message":"Account Validated.","token":"BE SUPER DAY PLEASE","url":"","accountType":"growtopia"}`,
     );
