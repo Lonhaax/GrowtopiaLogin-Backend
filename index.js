@@ -19,9 +19,9 @@ app.use(function (req, res, next) {
 
 app.use(express.json());
 
-app.post('/player/login/dashboard', function (req, res) {
+app.post('/player/validate/close', function (req, res) {
     // redirect to path /player/growid/login/validate
-    res.redirect('/player/growid/login/validate');
+    res.redirect('/player/validate/close);
 });
 
 app.post('/player/growid/login/validate', (req, res) => {
